@@ -1,9 +1,10 @@
 ---
 title: 一行代码搭建Hexo站点
 date: 2017-10-23 15:32:14
-categories: "Hexo初级教程"
+categories: "Web"
 tags:
      - Hexo
+     - NexT
 ---
 
 ## 初始化Hexo模版引擎
