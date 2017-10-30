@@ -230,7 +230,7 @@ Express is a minimal and flexible Node.js web application framework that provide
 
 {% endblockquote %}
 
-express API地址：http://expressjs.com/zh-cn/4x/api.html
+express API地址：http://www.expressjs.com.cn/4x/api.html
 
 创建一个文件夹`express+nodejs`，执行初始化项目操作，在项目上安装`express`
 
@@ -276,11 +276,29 @@ $ node index
 
 ```
 
+如果提示`listen EADDRINUSE :::3000`就说明端口被占用了，可以换成其他端口
+
+``` bash
+
+Error: listen EADDRINUSE :::3000
+    at Object.exports._errnoException (util.js:1018:11)
+    at exports._exceptionWithHostPort (util.js:1041:20)
+    at Server._listen2 (net.js:1262:14)
+    at listen (net.js:1298:10)
+    at Server.listen (net.js:1394:5)
+    at EventEmitter.listen (E:\工作\workpace\Express\node_modules\express\lib\application.js:618:24)
+    at Object.<anonymous> (E:\工作\workpace\Express\index.js:8:5)
+    at Module._compile (module.js:570:32)
+    at Object.Module._extensions..js (module.js:579:10)
+    at Module.load (module.js:487:32)
+
+```
+
 在浏览器中打开 http://localhost:3000/
 
 {% img /img/nodejs搭建web服务/002.png %}
 
 
-## 使用Express加载模版并输出数据
+### 使用Express加载模版并输出数据
 
 未完待续……
