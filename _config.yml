@@ -92,3 +92,4 @@ feed:
   path: atom.xml ##feed路径
   limit: 20  ##feed文章最小数量
 
+## https://ghbtns.com/github-btn.html?user=huxpro&amp;repo=js-module-7day&amp;type=star&amp;count=true
