@@ -1,6 +1,6 @@
 ---
 title: 一行代码搭建Hexo站点
-date: 2017-10-23 15:32:14
+date: 2016-10-23 15:32:14
 categories: "Web"
 tags:
      - Hexo

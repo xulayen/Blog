@@ -1,6 +1,6 @@
 ---
 title: JSON WEB TOKEN
-date: 2017-10-31 15:58:04
+date: 2016-10-31 15:58:04
 categories: "Web"
 tags:
      - Nodejs
