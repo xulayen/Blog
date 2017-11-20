@@ -19,7 +19,7 @@ $ npm install weixin-js-sdk
 ```
 
 ## 简介
-> ***一个基于`jquery`的兼容AMD、CMD、Commandjs的[插件](https://www.npmjs.com/package/jquery_wechat_sdk)，目的在于帮助微信开发者更好的更方便的使用微信里面的api。***
+> ***一个基于`jquery`的兼容AMD、CMD、Commandjs的[模块包](https://www.npmjs.com/package/jquery_wechat_sdk)，目的在于帮助微信开发者更好的更方便的使用微信里面的api。***
 
 <!-- more -->
 
@@ -32,32 +32,77 @@ $ npm install weixin-js-sdk
 
 ``` html
 
-<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
-<script src="https://github.com/xulayen/WeChat/blob/master/static/script/Jquery.WeChat.1.2.2.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js" type="text/javascript"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g="
+        crossorigin="anonymous"></script>
+        <script type="text/javascript" src="http://xulayen.imwork.net/cdn/jquery_wechat_sdk.1.4.9.js"></script>
+
+        <script>
+            console.log($.WeChart({
+                appId: 'your appid',
+                timestamp: 'your timestamp',
+                nonceStr: 'your nonceStr',
+                signature: 'your signature ',
+                access_token:'your access_token',
+                debug:true
+            }).InitWeChat());
+        </script>
+    </head>
+    <body>
+
+    </body>
+</html>
 
 ```
 
-#### 1、动态获取资源
+#### 1、调取api地址远程获取
 
 ``` js
-var wechatMgr= $.WeChart({
-    api: [''],
-    type: ['GET'],
-    facid: [''],
-    typenum: [''],
-    async: [false]
-}).InitWeChat();
+
+var _w = require('jquery_wechat_sdk');
+
+var params={
+    appid:'yourappid',
+    appsecret:'yourappsecret',
+    timestamp:'yourtimestamp',
+    nonceStr:'yournoncestr'
+}
+
+var wechatMgr=_w.WeChart({
+    api:'/access_token',
+    data:params,
+    debug:true
+});
+
+wechatMgr.InitWeChat(function(result){
+    this.appId = params.appid;
+    this.timestamp = params.timestamp;
+    this.nonceStr = params.nonceStr;
+    this.signature = result.signature;
+    this.access_token = result.access_token;
+});
 ```
 
-#### 2、静态获取资源
+#### 2、本地直接设置
 
 ``` js
-var wechatMgr= $.WeChart({
-    appId: [''],
-    timestamp: [''],
-    nonceStr: [''],
-    signature: ['']
+
+var _w = require('jquery_wechat_sdk');
+
+
+var wechatMgr= _w.WeChart({
+    appId: 'your appid',
+    timestamp: 'your timestamp',
+    nonceStr: 'your nonceStr',
+    signature: 'your signature ',
+    access_token:'your access_token'
 }).InitWeChat();
 ```
 
@@ -65,29 +110,107 @@ var wechatMgr= $.WeChart({
 
 ### 环境准备
 
-准备基础环境 `nodejs` `npm`，基础浏览器一枚
+准备基础环境 `browserify` ，基础浏览器一枚，可以在开源项目中学习[在browserify中加载jquery_wechat_sdk](https://github.com/xulayen/browerisy-jquery-wechat-sdk)
 
 ### 安装
 
 ``` js
 
-$ npm install jquery_wechat_sdk
+$ npm install browserify --save-dev
+
+$ npm install jquery_wechat_sdk --save-dev
 
 ```
 
-### 设置
+### 使用
+
+#### Browserify/Webpack
+
+[browserify API](http://browserify.org/)  /  [Webpack API](https://webpack.github.io/docs/)
+猛击[源码](https://github.com/xulayen/wechathand)获取项目demo
 
 ``` js
-require.config({
-　　　baseUrl: "./static",
-　　　paths: {
-        "jquery": "jquery",
-        "jquery_wechat_sdk":"jquery_wechat_sdk"
-　　  }
+
+var _w = require('jquery_wechat_sdk');
+
+var wechatMgr=_w.WeChart({
+    appId: 'your appid',
+    timestamp: 'your timestamp',
+    nonceStr: 'your nonceStr',
+    signature: 'your signature ',
+    access_token:'your access_token',
+    debug:true
 });
-　　
-require(['jquery','jquery_wechat_sdk'],function($){
-    //dosomething……
+
+wechatMgr.InitWeChat();
+
+```
+
+#### AMD (Asynchronous Module Definition)
+
+AMD 是为浏览器创建的模块，更多信息参见，这里推荐使用`require.js`[文档](http://requirejs.org/docs/whyamd.html)
+
+``` html
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.js" type="text/javascript" ></script>
+
+        <script>
+        　　require.config({
+        　　　　baseUrl: "./static",
+        　　　　paths: {
+                    "jquery_wechat_sdk":"jquery_wechat_sdk"
+        　　　　}
+        　　});
+            require(['jquery_wechat_sdk'],function(_w){
+                _w.WeChart({
+                    appId: 'your appid',
+                    timestamp: 'your timestamp',
+                    nonceStr: 'your nonceStr',
+                    signature: 'your signature ',
+                    access_token:'your access_token',
+                    debug:true
+                }).InitWeChat();
+            });
+        </script>
+    </head>
+    <body>
+
+    </body>
+</html>
+```
+
+
+#### Babel
+
+Babel是下一代JavaScript编译器。其中一个特性是现在可以使用ES6/ES2015模块，尽管浏览器还没有本地支持这个特性。
+
+``` js
+import _w from "jquery_wechat_sdk";
+```
+
+#### Node
+
+`jquery_wechat_sdk`运行在node端，需要提供一个带有`document`的`window`，因为没有这样的`document`在`node`中存在，所以可以使用`jsdom`,这样可以达到测试的目的
+
+``` js
+npm install jquery_wechat_sdk
+```
+
+``` js
+require("jsdom").env("", function(err, window) {
+    if (err) {
+        console.error(err);
+        return;
+    }
+
+    var _w = require("jquery_wechat_sdk")(window);
 });
 ```
 
@@ -387,15 +510,15 @@ wechatMgr.InitWxError([fn])
 #### baseapi_openCard
 是否启用打开卡券js接口，默认`true`
 #### appId
-微信appid
+微信`appid`，可直接传递也可以通过`api`远程地址获取`result.APPID`
 #### timestamp
-时间戳
+时间戳，可直接传递也可以通过`api`远程地址获取`result.TIMESTAMP`
 #### nonceStr
-特定字符窜
+特定字符窜，可直接传递也可以通过`api`远程地址获取`result.NONCESTR`
 #### signature
-签名
+签名，可直接传递也可以通过`api`远程地址获取`result.SIGNATURE`
 #### access_token
-token
+token，可直接传递也可以通过`api`远程地址获取`result.ACCESS_TOKEN`
 #### menu_share_timeline
 分享到朋友圈，默认`true`
 #### menu_share_appMessage
@@ -421,17 +544,19 @@ token
 #### menu_share_refresh
 刷新，默认`true`
 #### api
-远程api地址
-#### facid
-业务标识
-#### typenum
-公众号类型
+远程api地址，本工具是使用`ajax`来交互数据的，并没有使用`jsonp`等跨域方式，所以最好你的`api`地址在服务器端已经开启了可以跨域的限制`Access-Control-Allow-Origin=your domain`
+~~#### facid~~
+~~业务标识~~
+~~#### typenum~~
+~~公众号类型~~
+#### data
+提交的数据`{}`对象字面量
 #### scanAuthUrl
-需要调取摄像头的页面，默认location.href
+需要调取摄像头的页面，默认`location.href`
 #### hideOptionMenu
 是否隐藏菜单，默认`true`
 #### async
-是否异步，默认`true`
+是否异步，默认`false`
 #### type
 提交类型，默认`post`
 #### ContentType
@@ -484,9 +609,8 @@ document.getElementById('btn1').onlick=function(){
 ## 附录
 
 ### 需要改善的地方
-1、获取`api`地址的地方的参数化需要抽象化。
-2、微信支付必须在后台产生必要的支付信息`pay`之后才能发起请求，需要优化。
-3、每次调用都会从服务器端获取`appid`等信息，需要优化处理。
+1、每次调用都会从服务器端获取`appid`等信息，需要优化处理。
+2、处理`signature`、`access_token`需要模块化
 
 ### 外链地址
 1、[微信官方文档](https://mp.weixin.qq.com/wiki?t=resource/res_main&id=mp1445241432)
