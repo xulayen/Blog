@@ -618,3 +618,8 @@ document.getElementById('btn1').onlick=function(){
 3、[jquery_wechat_sdk](https://github.com/xulayen/WeChat/)源码
 
 
+## 交流
+
+QQ群：596087259 ，使用疑问，开发，贡献代码请加群。
+
+
