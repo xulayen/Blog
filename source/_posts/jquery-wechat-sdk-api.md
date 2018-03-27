@@ -69,22 +69,17 @@ $ npm install weixin-js-sdk
 var _w = require('jquery_wechat_sdk');
 
 var params={
-    appid:'yourappid',
-    appsecret:'yourappsecret',
-    timestamp:'yourtimestamp',
-    nonceStr:'yournoncestr'
+    api:'',
+    debug:false
+    yourdata:yourdata
 }
 
-var wechatMgr=_w.WeChart({
-    api:'/access_token',
-    data:params,
-    debug:true
-});
+var wechatMgr=_w.WeChart(params);
 
 wechatMgr.InitWeChat(function(result){
-    this.appId = params.appid;
-    this.timestamp = params.timestamp;
-    this.nonceStr = params.nonceStr;
+    this.appId = result.appid;
+    this.timestamp = result.timestamp;
+    this.nonceStr = result.nonceStr;
     this.signature = result.signature;
     this.access_token = result.access_token;
 });
@@ -616,7 +611,7 @@ document.getElementById('btn1').onlick=function(){
 1、[微信官方文档](https://mp.weixin.qq.com/wiki?t=resource/res_main&id=mp1445241432)
 2、[jquery_wechat_sdk](https://www.npmjs.com/package/jquery_wechat_sdk)在npm上的地址
 3、[jquery_wechat_sdk](https://github.com/xulayen/WeChat/)源码
-
+4、[在线聊天地址](https://gitter.im/jquery_wechat_sdk/Lobby)
 
 ## 交流
 
