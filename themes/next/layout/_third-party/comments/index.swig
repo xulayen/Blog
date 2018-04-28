@@ -1,5 +1,5 @@
 {% include 'duoshuo.swig' %}
-{% include 'disqus.swig' %}
+{% include 'gitalk.swig' %}
 {% include 'hypercomments.swig' %}
 {% include 'youyan.swig' %}
 {% include 'livere.swig' %}

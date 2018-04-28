@@ -369,9 +369,13 @@ baidu_analytics: 327573ae29bff3e49a0152fd0be5e1c2
 
 # Disqus
 disqus:
-  enable: true
+  enable: false
   shortname: HexoNexTBlog
   count: true
+
+# Gitalk
+Gitalk:
+  enable: true
 
 # Hypercomments
 #hypercomments_id:
