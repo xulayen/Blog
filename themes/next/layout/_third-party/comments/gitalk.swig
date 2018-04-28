@@ -7,13 +7,13 @@
 
       <script>
         var gitalk = new Gitalk({
-          clientID: '838f1b0ca24494f8a066',
-          clientSecret: 'b55027307fea0b425c73fd33da3fb7d400cd99c5',
-          repo: 'Blog',
-          owner: 'xulayen',
-          admin: ['xulayen'],
-          id: 'Demo',      // Ensure uniqueness and length less than 50
-          distractionFreeMode: false  // Facebook-like distraction free mode
+          clientID: '{{ theme.Gitalk.clientID }}',
+          clientSecret: '{{ theme.Gitalk.clientSecret }}',
+          repo: '{{ theme.Gitalk.repo }}',
+          owner: '{{ theme.Gitalk.owner }}',
+          admin: ['{{ theme.Gitalk.admin }}'],
+          id: '{{ theme.Gitalk.id }}',      // Ensure uniqueness and length less than 50
+          distractionFreeMode: {{ theme.Gitalk.distractionFreeMode }}  // Facebook-like distraction free mode
         })
 
         gitalk.render('gitalk-container')

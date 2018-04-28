@@ -376,6 +376,13 @@ disqus:
 # Gitalk
 Gitalk:
   enable: true
+  clientID: '838f1b0ca24494f8a066'
+  clientSecret: 'b55027307fea0b425c73fd33da3fb7d400cd99c5'
+  repo: 'Blog'
+  owner: 'xulayen'
+  admin: 'xulayen'
+  id: 'Demo'      
+  distractionFreeMode: false 
 
 # Hypercomments
 #hypercomments_id:
