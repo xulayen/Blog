@@ -537,7 +537,7 @@ passage_end_tag:
 ## 结束语
 跟着我的步骤可以很快的搭建一个属于自己的博客站点，当然`hexo.next`远远不知这些配置项，有兴趣的同学可以自己看看里面的配置。
 这篇文章为什么叫一行代码搭建hexo博客呢，啊哈哈哈，不这样也不会有人看哇，懂hexo的人就不用看了，高手勿喷~另外可以使用翻墙软件在下方评论，写下你想说的话，没有翻墙的，可以直接在`站点概述`中qq我或者e-mail我都可以。
-祝，早新手早日玩转hexo博客，这是 {% link 博主 http://xulayen.imwork.net/ %} 的博客，文章不定期更新
+祝，早新手早日玩转hexo博客，这是 {% link 博主 http://blog.xulayen.com/ %} 的博客，文章不定期更新
 
 {% link NexT官网地址 http://theme-next.iissnan.com/getting-started.html %}
 

@@ -1,7 +1,7 @@
 
 ## Live Preview
 
-* :heart_decoration: Muse scheme: [Xulayen](http://xulayen.imwork.net/) 
+* :heart_decoration: Muse scheme: [Xulayen](http://blog.xulayen.com/) 
 
 ## Useage
 

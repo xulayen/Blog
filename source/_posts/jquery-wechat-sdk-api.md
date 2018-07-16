@@ -42,7 +42,7 @@ $ npm install weixin-js-sdk
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g="
         crossorigin="anonymous"></script>
-        <script type="text/javascript" src="http://xulayen.imwork.net/cdn/jquery_wechat_sdk.1.4.9.js"></script>
+        <script type="text/javascript" src="http://blog.xulayen.com/cdn/jquery_wechat_sdk.1.4.9.js"></script>
 
         <script>
             console.log($.WeChart({

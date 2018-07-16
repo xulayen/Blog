@@ -1,6 +1,6 @@
 /**
  * Created by xulayen on 2016/9/14.
- * api address http://xulayen.imwork.net/2017/11/15/jquery-wechat-sdk-api/
+ * api address http://blog.xulayen.com/2017/11/15/jquery-wechat-sdk-api/
  */
 ;(function (root, factory) {
     "use strict";
